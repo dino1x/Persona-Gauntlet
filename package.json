@@ -1,0 +1,40 @@
+{
+  "name": "persona-gauntlet",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Persona Gauntlet — Real-human browser persona verification & closed-loop self-healing powered by Kane CLI",
+  "type": "module",
+  "bin": {
+    "persona-gauntlet": "./bin/gauntlet.mjs"
+  },
+  "scripts": {
+    "dev": "vite --port 4180",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --port 4180",
+    "test": "node --test tests/gauntlet.test.mjs",
+    "kane:ingest": "HOME=\"$PWD/.kane-home\" KANE_CLI_USER_AGENT=claude-code kane-cli context ingest ./personas/persona-specs.md --mode ci",
+    "kane:lint-policy": "HOME=\"$PWD/.kane-home\" KANE_CLI_USER_AGENT=claude-code kane-cli evidence lint-policy ./policies/persona-gauntlet-policy.yaml",
+    "kane:live": "bash ./scripts/run-kane-live.sh",
+    "gauntlet:cli": "node ./bin/gauntlet.mjs"
+  },
+  "dependencies": {
+    "lucide-react": "^0.475.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.0.6",
+    "@types/node": "^22.13.4",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "@vitejs/plugin-react": "^4.3.4",
+    "tailwindcss": "^4.0.6",
+    "typescript": "~5.7.3",
+    "vite": "^6.1.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}

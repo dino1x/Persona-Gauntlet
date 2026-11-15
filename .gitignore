@@ -1,0 +1,28 @@
+# OS & Editor artifacts
+.DS_Store
+.vscode/
+.idea/
+*.swp
+
+# Environment & logs
+.env
+.env.*
+!.env.example
+*.log
+*.map
+
+# Package & build outputs
+node_modules/
+dist/
+build/
+coverage/
+
+# Isolated Kane CLI runtime & evidence packs
+.kane-home/
+.testmuai/sessions/
+.testmuai/evidence/
+*.evidence
+*.verdicts/
+# kane-cli context store: shared through a location, never merged with git
+.context/
+*.tsbuildinfo
