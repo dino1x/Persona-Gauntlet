@@ -1,0 +1,10 @@
+{
+  "healedMap": {
+    "maya": false,
+    "dev": false,
+    "ana": false,
+    "sam": true,
+    "lena": false,
+    "joe": true
+  }
+}
