@@ -1,0 +1,22 @@
+policy: persona-gauntlet-gate
+gates:
+  - id: zero-failed-personas
+    metric: totals.failed
+    equals: 0
+    severity: blocking
+    message: Every human persona must complete checkout and subscription management without failure.
+  - id: zero-broken-personas
+    metric: totals.broken
+    equals: 0
+    severity: blocking
+    message: No persona test oracle may be left broken or unverified.
+  - id: every-persona-asserts-outcome
+    metric: metrics.tests_without_checks
+    equals: 0
+    severity: blocking
+    message: Every persona flow must assert a visible end-state and extract proof into final_state.
+  - id: zero-silent-heals
+    metric: metrics.heal.healed_tests
+    max: 0
+    severity: warning
+    message: Accessibility and locale defects must be fixed in application code, not masked by selector healing.
