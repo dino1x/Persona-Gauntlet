@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+:root {
+  --pg-canvas: #FFFFFF;
+  --pg-card: #FBFAF9;
+  --pg-ink: #1F1E1D;
+  --pg-body: #474645;
+  --pg-muted: #84827F;
+  --pg-hairline: #EFEDEA;
+  --pg-fail: #EF4444;
+  --pg-pass: #30C25A;
+  --pg-blue: #0A84FF;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
+  --font-mono: 'DM Mono', ui-monospace, SFMono-Regular, monospace;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--pg-canvas);
+  color: var(--pg-ink);
+  letter-spacing: -0.006em;
+}
+
+/* Display headline face */
+.font-architectural {
+  font-family: var(--font-display);
+  letter-spacing: -0.035em;
+}
+
+.font-mono-code {
+  font-family: var(--font-mono);
+  letter-spacing: 0;
+}
+
+.gpu-card {
+  will-change: transform;
+  contain: layout paint;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Soft lifted card */
+.soft-card {
+  background: var(--pg-card);
+  border-radius: 24px;
+  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 220ms ease;
+}
+
+.soft-card:hover {
+  transform: translate3d(0, -2px, 0);
+  box-shadow: 0 12px 32px -12px rgba(31, 30, 29, 0.14);
+}
+
+/* Avatar bubble pop on select */
+@keyframes bubblePop {
+  0% { transform: scale(0.92); }
+  60% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+.bubble-pop {
+  animation: bubblePop 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Kept as no-op hooks for older markup */
+.architectural-hatch { background-color: var(--pg-card); }
+.grid-crosshair { position: relative; }
