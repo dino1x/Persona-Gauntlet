@@ -1,0 +1,13 @@
+generated: 2026-11-17T13:14:14.573Z
+totals:
+  failures: 1
+  triaged: 1
+  untriaged: 0
+failures:
+  - test: maya-keyboard-78f02e88
+    ordinal: 17
+    step: 2-7
+    status: failed
+    path: tests/maya-keyboard-78f02e88/steps/17-2-7/failure.yaml
+    title: Complete Order keyboard activation does not show confirmation
+    triage_status: triaged

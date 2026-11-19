@@ -192,7 +192,62 @@ export function App() {
   const [loopStepLabel, setLoopStepLabel] = useState<string>('Ready — Baseline 2 of 6 personas passing');
   const [muted, setMuted] = useState(false);
   const [copiedCmd, setCopiedCmd] = useState<'idle' | 'copied' | 'failed'>('idle');
-  const [inspectorTab, setInspectorTab] = useState<'ndjson' | 'diff' | 'policy'>('ndjson');
+  const [inspectorTab, setInspectorTab] = useState<'filmstrip' | 'ndjson' | 'diff' | 'policy'>('filmstrip');
+  const [activeFilmFrame, setActiveFilmFrame] = useState<number>(1);
+
+  const MAYA_FILMSTRIP_FRAMES = [
+    {
+      step: 'Step 01 · 0-1',
+      title: 'Open Storefront in Keyboard-Only Mode',
+      src: '/kane-runs/maya-keyboard/step-01-open.jpg',
+      status: 'passed',
+      elapsed: 'sub-objective 1 · 54.3s',
+      action: 'Navigate to http://localhost:4180/?persona=maya -> verify Kurogami Atelier checkout stage visible',
+    },
+    {
+      step: 'Step 05 · 1-2 (Annotated)',
+      title: 'Agent Clicks Auto-Heal Before Tabbing',
+      src: '/kane-runs/maya-keyboard/step-05-annotated.png',
+      status: 'passed',
+      elapsed: 'sub-objective 2 · 187.3s',
+      action:
+        'click "Auto-Heal Defect & Re-Verify" (mouse). The non-focusable <div> defect is fixed here, so the Tab steps that follow run on the healed page.',
+    },
+    {
+      step: 'Step 08 · 1-6',
+      title: 'Tab Traversal to Express Air ($18.00)',
+      src: '/kane-runs/maya-keyboard/step-08-shipping-focus.jpg',
+      status: 'passed',
+      elapsed: 'sub-objective 2 · 187.3s',
+      action: "press_key 'Tab' -> press_key 'Enter' on Express Air <button> -> shipping badge updates to Express Air",
+    },
+    {
+      step: 'Step 12 · 2-2',
+      title: 'Keyboard Tab Progression Through Promo Bar',
+      src: '/kane-runs/maya-keyboard/step-12-tab-traversal.jpg',
+      status: 'passed',
+      elapsed: 'sub-objective 3 · 224.6s',
+      action: "press_key 'Tab' on Express Air -> Promo code input -> Apply button -> Complete Order ($148.00)",
+    },
+    {
+      step: 'Step 17 · 2-7 (Triaged)',
+      title: 'Run 1 Verdict: Off-Screen Confirmation Banner (Before Scroll Fix)',
+      src: '/kane-runs/maya-keyboard/step-17-verdict.jpg',
+      status: 'failed',
+      elapsed: 'Run 1 · sub-objective 3 · 224.6s',
+      action:
+        'RCA [application_issue/functional_defect · confidence 0.90]: Complete Order keyboard activation rendered confirmation banner below viewport fold',
+    },
+    {
+      step: 'Run 2 · Step 34 (PASSED)',
+      title: 'Run 2 Post-Fix Verification: 3/3 Passed + Playwright Export',
+      src: '/kane-runs/maya-keyboard-healed/step-34-order-confirmed.jpg',
+      status: 'passed',
+      elapsed: 'Run 2 (4d5a245c) · 385s · 3/3 passed',
+      action:
+        'Pure Tab + Enter keyboard flow selects Express Air, submits Complete Order, scrolls role="status" banner into view, extracts ORD-MAYA-8841, and exports test.py',
+    },
+  ];
 
   const loopTimersRef = useRef<number[]>([]);
   const clearAllLoopTimers = useCallback(() => {
@@ -204,6 +259,11 @@ export function App() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
+    if (params.get('persona')) {
+      window.requestAnimationFrame(() => {
+        document.getElementById('kurogami-storefront-stage')?.scrollIntoView({ block: 'start' });
+      });
+    }
     if (params.get('healed') === '0') return;
     fetch('/heal-state.json', { cache: 'no-store' })
       .then((r) => (r.ok ? r.json() : null))
@@ -590,7 +650,10 @@ export function App() {
         </section>
 
         {/* Workspace: live storefront stage beside the Kane CLI inspector */}
-        <section className="max-w-[1180px] mx-auto w-full px-6 pb-24 grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+        <section
+          id="kurogami-storefront-stage"
+          className="max-w-[1180px] mx-auto w-full px-6 pb-24 pt-4 grid grid-cols-1 lg:grid-cols-12 gap-5 items-start"
+        >
           <div className="lg:col-span-7 p-5 sm:p-6 rounded-[28px] bg-[#FBFAF9]">
             <StorefrontStage
               activePersona={activePersona}
@@ -603,7 +666,19 @@ export function App() {
           {/* Inspector */}
           <div className="lg:col-span-5 bg-[#FFFFFF] rounded-[28px] border border-[#EFEDEA] overflow-hidden flex flex-col">
             <div className="px-5 py-4 flex flex-wrap items-center justify-between gap-2">
-              <div className="flex items-center gap-1.5">
+              <div className="flex flex-wrap items-center gap-1.5">
+                <button
+                  type="button"
+                  onClick={() => setInspectorTab('filmstrip')}
+                  className={`h-8 px-3 rounded-full text-[13px] font-medium transition cursor-pointer flex items-center gap-1.5 ${
+                    inspectorTab === 'filmstrip'
+                      ? 'bg-[#1F1E1D] text-[#FFFFFF]'
+                      : 'bg-[#F4F2EF] text-[#84827F] hover:text-[#1F1E1D]'
+                  }`}
+                >
+                  <Sparkles className="w-3.5 h-3.5" />
+                  Field Filmstrip
+                </button>
                 <button
                   type="button"
                   onClick={() => setInspectorTab('ndjson')}
@@ -658,7 +733,98 @@ export function App() {
             </div>
 
             {/* Tab Body */}
-            <div className="p-6 space-y-4 max-h-[540px] overflow-y-auto group">
+            <div className="p-6 space-y-4 max-h-[620px] overflow-y-auto group">
+              {inspectorTab === 'filmstrip' && (
+                <div className="space-y-3.5">
+                  <div className="p-3.5 rounded-[16px] bg-[#1C1C1E] text-[#F4F8FF] space-y-2">
+                    <div className="flex items-center justify-between gap-2 text-[11px] font-mono-code">
+                      <span className="text-[#30C25A]">2 COMMITTED KANE-CLI v0.10.4 CLOUD RUNS (FAILED → PASSED)</span>
+                      <span className="text-[#8E8E93]">110.63 total credits · TestCase 01M7MST5M62TTXDD4R82Q2XKRM</span>
+                    </div>
+                    <div className="text-[12px] font-medium text-[#FFFFFF]">
+                      Run 1 (Before): <code className="font-mono-code text-[11px] text-[#EF4444]">7e9c8bac</code> (FAILED · 64.40 cr) → Run 2 (After):{' '}
+                      <code className="font-mono-code text-[11px] text-[#30C25A]">4d5a245c</code> (PASSED 3/3 · 46.23 cr)
+                    </div>
+                    <p className="text-[11px] text-[#D1D1D6] leading-relaxed">
+                      Real browser frames and exported Playwright Python code committed under{' '}
+                      <code className="font-mono-code text-[#F5A524]">public/kane-runs/maya-keyboard/</code> and{' '}
+                      <code className="font-mono-code text-[#30C25A]">public/kane-runs/maya-keyboard-healed/</code>.
+                    </p>
+                  </div>
+
+                  {/* Frame selector */}
+                  <div className="grid grid-cols-3 sm:grid-cols-6 gap-1.5">
+                    {MAYA_FILMSTRIP_FRAMES.map((frame, idx) => (
+                      <button
+                        key={frame.step}
+                        type="button"
+                        onClick={() => {
+                          gauntletAudio.tap(390);
+                          setActiveFilmFrame(idx);
+                        }}
+                        className={`px-2 py-1.5 rounded-[10px] text-[10px] font-mono-code text-center transition cursor-pointer border ${
+                          activeFilmFrame === idx
+                            ? 'bg-[#1F1E1D] text-[#FFFFFF] border-[#1F1E1D]'
+                            : frame.status === 'failed'
+                            ? 'bg-[#FEF2F2] text-[#DC2626] border-[#FECACA]'
+                            : 'bg-[#F4F2EF] text-[#474645] border-[#EFEDEA]'
+                        }`}
+                      >
+                        {frame.step.split(' · ')[0]}
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Active frame display */}
+                  {MAYA_FILMSTRIP_FRAMES[activeFilmFrame] && (
+                    <div className="rounded-[18px] border border-[#EFEDEA] bg-[#FBFAF9] overflow-hidden space-y-2.5 p-3">
+                      <div className="flex items-center justify-between gap-2 text-[11px] font-mono-code">
+                        <span className="font-semibold text-[#1F1E1D]">{MAYA_FILMSTRIP_FRAMES[activeFilmFrame].step}</span>
+                        <span
+                          className={`px-2 py-0.5 rounded-full text-[10px] font-semibold ${
+                            MAYA_FILMSTRIP_FRAMES[activeFilmFrame].status === 'failed'
+                              ? 'bg-[#FEF2F2] text-[#DC2626]'
+                              : 'bg-[#F0FDF4] text-[#15803D]'
+                          }`}
+                        >
+                          {MAYA_FILMSTRIP_FRAMES[activeFilmFrame].status.toUpperCase()} · {MAYA_FILMSTRIP_FRAMES[activeFilmFrame].elapsed}
+                        </span>
+                      </div>
+                      <div className="text-[13px] font-medium text-[#1F1E1D]">
+                        {MAYA_FILMSTRIP_FRAMES[activeFilmFrame].title}
+                      </div>
+                      <div className="rounded-[12px] overflow-hidden border border-[#E5E3DF] bg-[#1C1C1E]">
+                        <img
+                          src={MAYA_FILMSTRIP_FRAMES[activeFilmFrame].src}
+                          alt={MAYA_FILMSTRIP_FRAMES[activeFilmFrame].title}
+                          className="w-full h-auto block"
+                        />
+                      </div>
+                      <div className="text-[11px] font-mono-code text-[#474645] bg-[#FFFFFF] p-2.5 rounded-[10px] border border-[#EFEDEA]">
+                        {MAYA_FILMSTRIP_FRAMES[activeFilmFrame].action}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Honest residual note */}
+                  <div className="p-3.5 rounded-[16px] bg-[#FFFBEB] border border-[#FDE68A] text-[12px] text-[#92400E] space-y-1">
+                    <div className="font-semibold text-[11px] font-mono-code uppercase tracking-wider">
+                      Field report · Run 1 (7e9c8bac) vs. Run 2 (4d5a245c)
+                    </div>
+                    <p className="leading-relaxed text-[11.5px]">
+                      In <strong>Run 1</strong> (<code className="font-mono-code">7e9c8bac</code>), the agent clicked{' '}
+                      <strong>Auto-Heal Defect &amp; Re-Verify</strong> before tabbing, and Step 17 failed (<code className="font-mono-code">confidence 0.90</code>)
+                      because the confirmation banner rendered below the button outside the viewport. After adding{' '}
+                      <code className="font-mono-code">scrollIntoView</code> and <code className="font-mono-code">role=&quot;status&quot;</code> in{' '}
+                      <code className="font-mono-code">StorefrontStage.tsx</code>, <strong>Run 2</strong> (<code className="font-mono-code">4d5a245c</code>)
+                      completed all 3 sub-objectives via pure <code className="font-mono-code">Tab</code> + <code className="font-mono-code">Enter</code>{' '}
+                      keyboard traversal (<code className="font-mono-code">status: passed</code>, <code className="font-mono-code">385s</code>), extracted{' '}
+                      <code className="font-mono-code">ORD-MAYA-8841</code> from <code className="font-mono-code">internal:role=status</code>, and exported{' '}
+                      <code className="font-mono-code">test.py</code>.
+                    </p>
+                  </div>
+                </div>
+              )}
               {inspectorTab === 'ndjson' && (
                 <div className="space-y-3 group-hover:[animation-play-state:paused]">
                   <div className="p-4 rounded-[16px] bg-[#F4F8FF] border border-[#CCE4FF]">

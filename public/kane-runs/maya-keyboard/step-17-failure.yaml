@@ -1,0 +1,32 @@
+step: 2-7
+status: failed
+error:
+  message: 'Final verification failed: "the confirmation banner contains "Order Confirmed""'
+page_state:
+  url: http://localhost:4180/?persona=maya
+  screenshot: steps/17-2-7/screenshot.jpg
+console_at_failure:
+  ref: logs/2-console.ndjson
+  step: 2-7
+network_at_failure:
+  ref: logs/2-network.har
+  step: 2-7
+title: Complete Order keyboard activation does not show confirmation
+triage:
+  status: triaged
+  by:
+    kind: agent
+    id: v16-investigation/terminal
+    at: '2026-11-17T13:14:10.090926+00:00'
+  rca:
+    root_cause: After the Complete Order button was activated using the keyboard,
+      the checkout remained without the required confirmation message.
+    category: application_issue/functional_defect
+    confidence: 0.9
+  verification:
+    status: not_verified
+  severity: major
+  suggested_fix:
+    summary: Investigate the keyboard activation handler for Complete Order and ensure
+      it completes the order flow and displays a confirmation banner containing “Order
+      Confirmed”.

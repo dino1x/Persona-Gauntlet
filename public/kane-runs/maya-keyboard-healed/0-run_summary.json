@@ -1,0 +1,59 @@
+{
+  "run_id": "replay",
+  "test_id": "test",
+  "objective": "Go to http://localhost:4180/?persona=maya and verify the Kurogami Atelier checkout stage is visible.",
+  "start_url": "http://localhost:4180/?persona=maya",
+  "start_time": "2026-11-21T09:24:58.333078+00:00",
+  "config": {
+    "reasoning_provider": "replay",
+    "reasoning_model": "replay",
+    "vision_provider": "replay",
+    "vision_model": "replay",
+    "screen_width": 1920,
+    "screen_height": 1080,
+    "max_steps": 3
+  },
+  "credits_consumed": 0.0,
+  "steps": [
+    {
+      "step": 1,
+      "duration_ms": 2867.8,
+      "url": "https://kaneai-playground.lambdatest.io/",
+      "status": "passed",
+      "step_file": "step_001.json",
+      "action_type": "navigate",
+      "action_target": "Navigate to http://localhost:4180/?persona=maya",
+      "success": true,
+      "method": "action"
+    },
+    {
+      "step": 2,
+      "duration_ms": 1567.2,
+      "url": "http://localhost:4180/?persona=maya",
+      "status": "passed",
+      "step_file": "step_002.json",
+      "action_type": "analyze",
+      "action_target": "Checking whether the Kurogami Atelier checkout stage is present",
+      "success": true,
+      "method": "action"
+    },
+    {
+      "step": 3,
+      "duration_ms": 118.7,
+      "url": "http://localhost:4180/?persona=maya",
+      "status": "passed",
+      "step_file": "step_003.json",
+      "action_type": "assert",
+      "action_target": "the Kurogami Atelier checkout stage is visible",
+      "success": true,
+      "method": "assertion"
+    }
+  ],
+  "errors": [],
+  "end_time": "2026-11-21T09:25:02.902232+00:00",
+  "total_duration_ms": 4567.148832997191,
+  "final_status": "passed",
+  "final_url": "http://localhost:4180/?persona=maya",
+  "total_steps": 3,
+  "reason": "replay completed"
+}

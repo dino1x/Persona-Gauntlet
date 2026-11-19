@@ -42,6 +42,10 @@ for (const arg of args) {
     }
     continue;
   }
+  if (arg === '--persona') {
+    console.error('Error: --persona needs a value in the form --persona=<id> (maya, dev, ana, sam, lena, joe).');
+    process.exit(2);
+  }
   if (!VALID_TOKENS.has(arg)) {
     console.error(`Error: Unknown argument "${arg}". Run "node ./bin/gauntlet.mjs --help" for usage.`);
     process.exit(2);

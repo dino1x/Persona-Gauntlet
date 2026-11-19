@@ -33,6 +33,15 @@ export const StorefrontStage: React.FC<StorefrontStageProps> = React.memo(
     const [promoApplied, setPromoApplied] = useState(false);
     const [promoError, setPromoError] = useState<string | null>(null);
     const [orderConfirmed, setOrderConfirmed] = useState(false);
+    const confirmationRef = useRef<HTMLDivElement>(null);
+
+    // Keep the confirmation visible after a keyboard or click submit: it renders
+    // below the checkout button and can otherwise land outside the viewport.
+    useEffect(() => {
+      if (orderConfirmed) {
+        confirmationRef.current?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      }
+    }, [orderConfirmed]);
     const [chargeCount, setChargeCount] = useState(0);
     const [isSubmitting3G, setIsSubmitting3G] = useState(false);
     const [interceptedError, setInterceptedError] = useState<string | null>(null);
@@ -553,7 +562,10 @@ export const StorefrontStage: React.FC<StorefrontStageProps> = React.memo(
                 )}
 
                 {orderConfirmed && !interceptedError && (
-                  <div className="p-3 rounded-xl bg-[#F0FDF4] border border-[#BBF7D0] text-xs text-[#15803D] font-mono-code flex items-center justify-between">
+                  <div
+                    ref={confirmationRef}
+                    role="status"
+                    className="p-3 rounded-xl bg-[#F0FDF4] border border-[#BBF7D0] text-xs text-[#15803D] font-mono-code flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <ShieldCheck className="w-4 h-4 shrink-0" />
                       <span>

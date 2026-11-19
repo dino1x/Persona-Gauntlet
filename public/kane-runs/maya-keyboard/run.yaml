@@ -1,0 +1,25 @@
+evidence: '0.1'
+run_id: 4f7d5433-5ae0-4ee5-bc55-7d92ea7fcd1c
+status: finalized
+title: Maya Lin — Keyboard-Only Checkout Verification
+started: 2026-11-17T13:05:48.847Z
+environment:
+  producer:
+    name: kane-cli
+    version: 0.10.4
+  run_kind: author
+  origin: testmd
+  pid: 46123
+  saved: true
+metrics_catalog:
+  id: kane-cli
+  version: 1
+  sha256: 9774e11a8a2240448d765bd4ad8eb1cf6c0444937e72050588b597539c890e77
+  source: bundled
+ended: 2026-11-17T13:14:14.573Z
+totals:
+  tests: 1
+  passed: 0
+  failed: 1
+  broken: 0
+  skipped: 0

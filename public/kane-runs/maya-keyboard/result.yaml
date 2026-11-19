@@ -1,0 +1,136 @@
+evidence: '0.1'
+test: maya-keyboard-78f02e88
+status: failed
+duration_ms: 505696
+definition:
+  path: test.md
+  sha256: sha256:4e94481deb3592b01dcf2a569a260e97f95ed370306cc338f795b7d4fb415e86
+definition_id: sha256:c77c612b3c1c7072c37a692cda606ad81603a9b0f49165525078e7be5eaaee17
+external_id:
+  execution_id: 4f7d5433-5ae0-4ee5-bc55-7d92ea7fcd1c
+  session_id: 7e9c8bac-b644-4d28-a5b1-e1d23146cff5
+  commit_id: 7e9c8bac-b644-4d28-a5b1-e1d23146cff5
+  test_id: c36d279f-f720-40ec-aa92-36d638b4bbd8
+  testcase_id: 01M7MST5M62TTXDD4R82Q2XKRM
+  project_id: 01M7MPS9Y77NE2KVM7CTVSTZG5
+  folder_id: 01M7MPSBCBT4MYCYNEWKKZ2ZTH
+  org_id: '3437335'
+  session_name: maya_keyboard
+  user_name: marvelobed
+  sharable_link: https://test-manager.lambdatest.com/projects/01M7MPS9Y77NE2KVM7CTVSTZG5/test-cases/01M7MST5M62TTXDD4R82Q2XKRM/dashboard/share/US_AXLNIWIK5XY5W6HYNSLE6M6GAV8LUCF6PHO3FMH7KIZF7IAYFYQE6NTLZWHFPMY3?type=summary&agentView=true&fqdn=summary-page
+tags:
+  - persona
+  - accessibility
+  - keyboard
+environment:
+  model: v16-alpha
+  os: macOS
+  browser: Chrome
+  browser_version: '157'
+  resolution: 1920x1080
+  platform: Desktop
+  platform_type: web
+  os_version: 27.0.1
+steps:
+  - id: 0-1
+    ordinal: 1
+    status: passed
+    kind: navigate
+    duration_ms: 0
+    action_id: 4b24a06a-4156-4ba3-8437-d5b286a2f9ac
+  - id: 0-2
+    ordinal: 2
+    status: passed
+    kind: analyze
+    duration_ms: 21500
+    action_id: bd0acd15-02a8-4ef8-af0b-8cf26fbb3abb
+  - id: 0-3
+    ordinal: 3
+    status: passed
+    kind: assert
+    duration_ms: 0
+    action_id: b6be3812-80e4-4e0c-87e4-0b660486934d
+  - id: 1-1
+    ordinal: 4
+    status: passed
+    kind: scroll
+    duration_ms: 12100
+    action_id: bdf87d05-dfc0-4421-8742-a3e83810eb72
+  - id: 1-2
+    ordinal: 5
+    status: passed
+    kind: click
+    duration_ms: 1200
+    action_id: d1d84a8b-4778-49f7-a691-e05ac732c83d
+  - id: 1-3
+    ordinal: 6
+    status: passed
+    kind: press_key
+    duration_ms: 25000
+    action_id: 78122eec-6e52-4bb0-adbd-53e1cba3857b
+  - id: 1-5
+    ordinal: 7
+    status: passed
+    kind: press_key
+    duration_ms: 19200
+    action_id: a192a359-a843-4141-bb5b-cb65b5d62d07
+  - id: 1-6
+    ordinal: 8
+    status: passed
+    kind: press_key
+    duration_ms: 12300
+    action_id: 0beff63e-2358-447f-8c05-bb1b9526f47b
+  - id: 1-7
+    ordinal: 9
+    status: passed
+    kind: analyze
+    duration_ms: 25500
+    action_id: ad750dbe-61a4-442a-8ca0-b89ca6a0a3d4
+  - id: 1-8
+    ordinal: 10
+    status: passed
+    kind: assert
+    duration_ms: 0
+    action_id: 724d87e9-0dbc-4647-8ff2-220248b4f609
+  - id: 2-1
+    ordinal: 11
+    status: passed
+    kind: press_key
+    duration_ms: 15300
+    action_id: 09c3b74e-6195-49b8-9dc8-6689a865e4d2
+  - id: 2-2
+    ordinal: 12
+    status: passed
+    kind: press_key
+    duration_ms: 12100
+    action_id: f1a04829-5a26-4c9c-ac3b-8895b07e51ec
+  - id: 2-3
+    ordinal: 13
+    status: passed
+    kind: press_key
+    duration_ms: 15800
+    action_id: 2c50afe9-5a13-4a7b-a5a3-c1061f9cbe02
+  - id: 2-4
+    ordinal: 14
+    status: passed
+    kind: press_key
+    duration_ms: 19500
+    action_id: 57601c37-bc2c-4d8b-984b-a8d1370f24a4
+  - id: 2-5
+    ordinal: 15
+    status: passed
+    kind: analyze
+    duration_ms: 82800
+    action_id: dedaacf1-0f89-4834-ba03-3ca253645f4f
+  - id: 2-6
+    ordinal: 16
+    status: passed
+    kind: analyze
+    duration_ms: 26600
+    action_id: 058b2603-15a5-4ab5-9aaa-20cdee6ce77f
+  - id: 2-7
+    ordinal: 17
+    status: failed
+    kind: assert
+    duration_ms: 0
+    action_id: 93198508-a5d4-407e-99f1-1d4a68d1e1a4

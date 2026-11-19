@@ -1,0 +1,257 @@
+evidence: '0.1'
+test: maya-keyboard-78f02e88
+status: passed
+duration_ms: 394571
+attempts:
+  - status: broken
+  - status: passed
+    duration_ms: 394571
+flaky: true
+adaptive_heal:
+  triggered: true
+  outcome: healed
+  shrink_count: 1
+  complete_reauthor: false
+  author_boundary: 1
+  total_steps: 3
+  reauthored_steps: 2
+  credits_consumed: 54.52
+  attempts:
+    - 'n': 1
+      status: broken
+      failed_at: 1
+      failure: 1/steps/4-1-1/failure.yaml
+definition:
+  path: test.md
+  sha256: sha256:4e94481deb3592b01dcf2a569a260e97f95ed370306cc338f795b7d4fb415e86
+definition_id: sha256:c77c612b3c1c7072c37a692cda606ad81603a9b0f49165525078e7be5eaaee17
+external_id:
+  execution_id: 665bab95-c755-4c14-ba2b-72eb6f8b14f8
+  session_id: 4d5a245c-55fd-4818-a50a-6fa631653a95
+  commit_id: 4d5a245c-55fd-4818-a50a-6fa631653a95
+  test_id: c36d279f-f720-40ec-aa92-36d638b4bbd8
+  testcase_id: 01M7MST5M62TTXDD4R82Q2XKRM
+  project_id: 01M7MPS9Y77NE2KVM7CTVSTZG5
+  folder_id: 01M7MPSBCBT4MYCYNEWKKZ2ZTH
+  org_id: '3437335'
+  session_name: maya_keyboard
+  user_name: marvelobed
+  sharable_link: https://test-manager.lambdatest.com/projects/01M7MPS9Y77NE2KVM7CTVSTZG5/test-cases/01M7MST5M62TTXDD4R82Q2XKRM/dashboard/share/US_O9MI6RIF00UKQEQVYMP5772SR483RYWXLPTRA8SJNSU6J2HRDUE0ZHGGYN37SB3K?type=summary&agentView=true&fqdn=summary-page
+tags:
+  - persona
+  - accessibility
+  - keyboard
+environment:
+  model: v16-alpha
+  os: macOS
+  browser: Chrome
+  browser_version: '158'
+  resolution: 1920x1080
+  platform: Desktop
+  platform_type: web
+  os_version: 27.0.1
+steps:
+  - id: 0-1
+    ordinal: 1
+    status: passed
+    kind: navigate
+    duration_ms: 2900
+    action_id: 4b24a06a-4156-4ba3-8437-d5b286a2f9ac
+  - id: 0-2
+    ordinal: 2
+    status: passed
+    kind: analyze
+    duration_ms: 1600
+    action_id: bd0acd15-02a8-4ef8-af0b-8cf26fbb3abb
+  - id: 0-3
+    ordinal: 3
+    status: passed
+    kind: assert
+    duration_ms: 100
+    action_id: b6be3812-80e4-4e0c-87e4-0b660486934d
+  - id: 1-1
+    ordinal: 4
+    status: passed
+    kind: press_key
+    duration_ms: 10500
+    action_id: 94f3a36d-a27d-448d-a88f-6e33fde18bad
+  - id: 1-2
+    ordinal: 5
+    status: passed
+    kind: press_key
+    duration_ms: 14300
+    action_id: f4bf1447-bfb0-448e-b200-4b9357be8b25
+  - id: 1-3
+    ordinal: 6
+    status: passed
+    kind: wait
+    duration_ms: 21400
+    action_id: 4130c0a9-f173-46ce-829c-1880b5f06492
+  - id: 1-4
+    ordinal: 7
+    status: passed
+    kind: press_key
+    duration_ms: 0
+    action_id: 5a546188-8120-4c8e-8b3f-f207706431cc
+  - id: 1-5
+    ordinal: 8
+    status: passed
+    kind: press_key
+    duration_ms: 0
+    action_id: 63b64e77-2016-4d14-b616-8cc7f67c80e7
+  - id: 1-6
+    ordinal: 9
+    status: passed
+    kind: press_key
+    duration_ms: 0
+    action_id: 6ef2aa06-564d-4c10-bec5-00293f5d7df4
+  - id: 1-7
+    ordinal: 10
+    status: passed
+    kind: press_key
+    duration_ms: 0
+    action_id: 1ad891b8-21ae-4a10-9d1d-02d2c7bc9e35
+  - id: 1-8
+    ordinal: 11
+    status: passed
+    kind: press_key
+    duration_ms: 0
+    action_id: 1ccec4e2-ce34-429e-8e34-8ed8c74e0c07
+  - id: 1-9
+    ordinal: 12
+    status: passed
+    kind: press_key
+    duration_ms: 0
+    action_id: 253d3d7d-623d-4109-8d85-7e12ff3c390b
+  - id: 1-10
+    ordinal: 13
+    status: passed
+    kind: press_key
+    duration_ms: 0
+    action_id: 0beb06e0-6feb-47cf-a51a-622d9015b9c5
+  - id: 1-11
+    ordinal: 14
+    status: passed
+    kind: press_key
+    duration_ms: 0
+    action_id: 000a548f-4756-4ec9-a1fe-e58bd56d9c62
+  - id: 1-12
+    ordinal: 15
+    status: passed
+    kind: wait
+    duration_ms: 17500
+    action_id: 8410029d-d1b3-40ce-9c86-a2ca64a8f228
+  - id: 1-13
+    ordinal: 16
+    status: passed
+    kind: press_key
+    duration_ms: 0
+    action_id: 65ddfb9c-1745-47fa-9605-c42d84896313
+  - id: 1-14
+    ordinal: 17
+    status: passed
+    kind: press_key
+    duration_ms: 0
+    action_id: c73d2675-4751-48c0-9dd2-526d1b7b91c7
+  - id: 1-15
+    ordinal: 18
+    status: passed
+    kind: press_key
+    duration_ms: 0
+    action_id: a837161c-f5ef-43e3-afbb-a0bb4f06ee3e
+  - id: 1-16
+    ordinal: 19
+    status: passed
+    kind: wait
+    duration_ms: 21200
+    action_id: f8a0c447-c913-41ff-8675-29a402f5253c
+  - id: 1-17
+    ordinal: 20
+    status: passed
+    kind: press_key
+    duration_ms: 0
+    action_id: 5f52e31f-9480-4b5f-8e2c-84a1123c9c2d
+  - id: 1-18
+    ordinal: 21
+    status: passed
+    kind: press_key
+    duration_ms: 0
+    action_id: 79704799-d4a0-47e3-a340-35f19d2a8294
+  - id: 1-19
+    ordinal: 22
+    status: passed
+    kind: press_key
+    duration_ms: 0
+    action_id: 0b816423-1ef9-4f07-98c6-763c9aed012e
+  - id: 1-20
+    ordinal: 23
+    status: passed
+    kind: press_key
+    duration_ms: 0
+    action_id: 337cc81d-b694-4e80-91aa-63f44308f49a
+  - id: 1-21
+    ordinal: 24
+    status: passed
+    kind: press_key
+    duration_ms: 0
+    action_id: c83792de-36d7-4a1a-b88f-47a17e6c5404
+  - id: 1-22
+    ordinal: 25
+    status: passed
+    kind: wait
+    duration_ms: 21900
+    action_id: 79781445-d839-4db6-b091-28ac9543f300
+  - id: 1-23
+    ordinal: 26
+    status: passed
+    kind: press_key
+    duration_ms: 18400
+    action_id: db195e00-c697-442f-b1dd-b2cca0a9539d
+  - id: 1-24
+    ordinal: 27
+    status: passed
+    kind: analyze
+    duration_ms: 26800
+    action_id: 3fe8ad88-144c-4a6f-b31f-5452817a990b
+  - id: 1-25
+    ordinal: 28
+    status: passed
+    kind: assert
+    duration_ms: 0
+    action_id: 75aac5b9-1b75-4078-801b-fa59053c2c84
+  - id: 2-1
+    ordinal: 29
+    status: passed
+    kind: press_key
+    duration_ms: 17500
+    action_id: 95d03380-ab66-4bd6-b8fb-59b36cdb3b03
+  - id: 2-2
+    ordinal: 30
+    status: passed
+    kind: press_key
+    duration_ms: 16400
+    action_id: 1886e16e-7ea5-4c72-bc6f-e58b551f80e8
+  - id: 2-3
+    ordinal: 31
+    status: passed
+    kind: press_key
+    duration_ms: 20000
+    action_id: 68044ccc-52dc-4b3d-aeff-e3fe25940e8c
+  - id: 2-4
+    ordinal: 32
+    status: passed
+    kind: press_key
+    duration_ms: 25000
+    action_id: dd64b9b7-aa58-4039-b466-029ab5199d4d
+  - id: 2-5
+    ordinal: 33
+    status: passed
+    kind: analyze
+    duration_ms: 52900
+    action_id: fe67b73c-e067-498a-88b1-2a3d54df4714
+  - id: 2-6
+    ordinal: 34
+    status: passed
+    kind: assert
+    duration_ms: 0
+    action_id: 22e77d76-1828-4e6d-a512-fc6590d9e7cc
